@@ -1,0 +1,50 @@
+
+@if (show==true) {
+    <div #loading class="loading d-flex justify-content-center align-items-center vh-100 w-100 z-2  position-absolute  ">
+        <span class="loader"></span>
+    </div> 
+}
+
+@else {
+    <div #loading class="loading d-flex justify-content-center align-items-center vh-100 w-100 z-2  position-absolute d-none  ">
+        <span class="loader"></span>
+    </div> 
+}
+
+
+<div class="home py-4 bg-warning">
+  <div class="container ">
+    <h1 class="text-center text-info my-2 bg-success">All Products ......</h1>
+    <div class="row g-4">
+      @for (product of productList; track $index) {
+      <div class="col-lg-3">
+        <div class="card bg-dark h-100">
+          <div class="card-body ">
+            <img [src]="product.image" class="card-img" alt="" />
+
+            <h2 class="text-white fs-5 py-2">Title:{{ product.title }}</h2>
+            <p class="text-warning py-2">
+              description:{{
+                product.description.split(" ").slice(0, 15).join(" ")
+              }}
+            </p>
+            <p class="text-success py-2">category:{{ product.category }}</p>
+            <p class="text-danger py-2">Price:{{ product.price }}</p>
+          </div>
+
+          <div class="card-footer bg-danger">
+            <h5 class="text-white">Rating and Count</h5>
+            <ul>
+              <li class="text-white">Count: {{ product.rating.count }}</li>
+              <li class="text-white">Rate: {{ product.rating.rate }}</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+
+
